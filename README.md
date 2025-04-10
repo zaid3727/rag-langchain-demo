@@ -5,7 +5,7 @@ This project demonstrates a simple, interview-ready Retrieval-Augmented Generati
 - SentenceTransformer for text embeddings
 - FAISS for fast semantic retrieval
 - LangChain for orchestration
-- Local Hugging Face model (flan-t5-base) for generation
+- Local Hugging Face model (`flan-t5-base`) for generation
 
 ---
 
@@ -24,21 +24,43 @@ This project demonstrates a simple, interview-ready Retrieval-Augmented Generati
 ### Install dependencies:
 
 ```bash
-pip install langchain langchain-community transformers faiss-cpu sentence-transformers
+pip install -r requirements.txt
 ```
 
-### Run the script:
+---
+
+### Option 1: Basic RAG with local flan-t5
+
+```bash
+python rag_basic.py
+```
+
+- Uses SentenceTransformer + FAISS
+- Generates answers with Hugging Face's `flan-t5-base`
+
+---
+
+### Option 2: LangChain-powered RAG
 
 ```bash
 python rag_langchain.py
 ```
 
-Example interaction:
+- Uses LangChain’s `RetrievalQA` abstraction
+- Combines FAISS + local flan-t5 generation
+- Clean, modular orchestration
 
+---
+
+### Option 3: RAG with OpenAI (GPT-3.5)
+
+```bash
+export OPENAI_API_KEY="your-openai-key"
+python rag_with_openai.py
 ```
-Ask your question: How did Zaid deploy ML models?
-Answer: FastAPI server
-```
+
+- Retrieval remains local (SentenceTransformer + FAISS)
+- Uses OpenAI API for generation
 
 ---
 
@@ -46,7 +68,7 @@ Answer: FastAPI server
 
 - Replace `docs.txt` with your resume or project notes
 - Add top-k retrieval (multiple chunks)
-- Upgrade to GPT-3.5 via OpenAI
+- Upgrade to GPT-4 or GPT-3.5 via OpenAI
 - Wrap it into a Streamlit or FastAPI app
 
 ---
