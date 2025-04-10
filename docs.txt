@@ -1,0 +1,4 @@
+Zaid worked on anomaly detection using UAV image acquisition.
+He built a FastAPI server to deploy machine learning models.
+He used MLflow to track experiments and model performance.
+Zaid implemented a CI/CD pipeline using GitHub Actions.
