@@ -4,7 +4,7 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-# Set your API key (hardcoded or via env variable)
+# Set  API key 
 openai.api_key = ""  
 
 # Load sentence embedding model
@@ -21,7 +21,7 @@ doc_embeddings = embed_model.encode(docs)
 index = faiss.IndexFlatL2(doc_embeddings.shape[1])
 index.add(np.array(doc_embeddings))
 
-# Your question
+# question
 query = "How did Zaid deploy machine learning models?"
 query_vec = embed_model.encode([query])
 D, I = index.search(np.array(query_vec), k=1)
@@ -40,7 +40,7 @@ Question:
 Answer:
 """
 
-# Call OpenAI ChatCompletion (classic style)
+# Call OpenAI ChatCompletion 
 response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[{"role": "user", "content": prompt}],
